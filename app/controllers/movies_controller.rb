@@ -6,7 +6,8 @@ class MoviesController < ApplicationController
   def show
     id = params[:id] # retrieve movie ID from URI route
     @movie = Movie.find(id) # look up movie by unique ID
-    # will render app/views/movies/show.html.haml by default
+    # will render app/views/movies/show.html.haml by defaultf
+    @reviews = @movie.reviews
   end
   
   # def new
@@ -53,7 +54,7 @@ class MoviesController < ApplicationController
   end
   
   def destroy
-    @movie = Movie.find(params[:idt])
+    @movie = Movie.find(params[:id])
     @movie.destroy
     flash[:notice] = "Movie '#{@movie.title}' deleted."
     redirect_to movies_path

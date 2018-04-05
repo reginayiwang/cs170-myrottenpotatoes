@@ -13,6 +13,7 @@
 
 class Movie < ActiveRecord::Base
   has_many :reviews
+  has_many :movieusers, :through => :reviews
   
   before_save :capitalize_title
   def capitalize_title
